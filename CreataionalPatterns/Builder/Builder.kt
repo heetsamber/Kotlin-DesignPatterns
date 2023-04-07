@@ -1,35 +1,65 @@
+open class ComputerBuilder{
+    private var OS:String? = null
+    private var RAM:Int? = null
+    private var screenSize:Double? = null
+    private var externalMouse:Boolean? = null
+    private var battery:String? = null
 
-class Computer{
-    var OS:String
-    var RAM:Int
-    var screenSize:Double
-    var externalMouse:Boolean
-    var externalKeyboard:Boolean
-    var battery:String
-
-    constructor(OS: String, RAM: Int, screenSize: Double,
-                externalMouse: Boolean, externalKeyboard: Boolean, battery: String) {
+    fun setOS(OS:String){
         this.OS = OS
+    }
+    fun getOS():String?{
+        return this.OS
+    }
+    fun setRAM(RAM:Int){
         this.RAM = RAM
+    }
+    fun getRAM():Int?{
+        return this.RAM
+    }
+    fun setScreenSize(screenSize:Double){
         this.screenSize = screenSize
+    }
+    fun getScreenSize():Double?{
+        return this.screenSize
+    }
+    fun setExternalMouse(externalMouse:Boolean){
         this.externalMouse = externalMouse
-        this.externalKeyboard = externalKeyboard
+    }
+    fun getExternalMouse():Boolean?{
+        return this.externalMouse
+    }
+    fun setBattery(battery:String){
         this.battery = battery
     }
+    fun getBattery():String?{
+        return this.battery
+    }
+}
 
-    override fun toString(): String {
+class Computer{
+
+    var cb:ComputerBuilder
+    constructor(compBuild:ComputerBuilder) {
+        this.cb = compBuild
+    }
+    fun build():String{
         return (" The required configuration is \n" +
-                " OS : $OS " +
-                " RAM : $RAM \n" +
-                " screenSize : $screenSize \n" +
-                " externalMouse : $externalMouse \n" +
-                " externalKeyboard : $externalKeyboard \n" +
-                " battery : $battery \n"
-        )
+                " OS : ${cb.getOS()} \n" +
+                " RAM : ${cb.getRAM()} \n" +
+                " screenSize : ${cb.getScreenSize()} \n" +
+                " externalMouse : ${cb.getExternalMouse()} \n" +
+                " battery : ${cb.getBattery()}\n")
     }
 }
 
 fun main(args: Array<String>) {
-    var comp = Computer("Windows", 8, 14.5, true, false, "Inbulit")
-    println(comp)
+    var compBuilder = ComputerBuilder()
+    compBuilder.setOS("windows")
+    compBuilder.setRAM(12)
+    compBuilder.setBattery("Inbuilt")
+    // not setting any value for external mouse
+
+    var comp = Computer(compBuilder)
+    println(comp.build())
 }
