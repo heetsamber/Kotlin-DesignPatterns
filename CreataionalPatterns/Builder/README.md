@@ -1,6 +1,6 @@
 
-Before
-'''Kotlin
+###Before
+```Kotlin
 
 class Computer{
     var OS:String
@@ -36,5 +36,4 @@ fun main(args: Array<String>) {
     var comp = Computer("Windows", 8, 14.5, true, false, "Inbulit")
     println(comp)
 }
-
-'''
+```
