@@ -1,5 +1,4 @@
 interface Command {
-
     fun execute()
 }
 
@@ -46,7 +45,7 @@ class SoundSystem : ConsumerElectronics {
     }
 }
 
-class Button(var c: Command) {
+class Button2(var c: Command) {
 
     fun click() {
         c.execute()
@@ -67,8 +66,9 @@ fun main(args: Array<String>) {
 
     // OnCommand is instantiated based on active device supplied by Remote
     val ce = UniversalRemote.getActiveDevice()
+
     val onCommand = OnCommand(ce)
-    val onButton = Button(onCommand)
+    val onButton = Button2(onCommand)
     onButton.click()
 
     val tv = Television()
@@ -77,6 +77,6 @@ fun main(args: Array<String>) {
     all.add(tv)
     all.add(ss)
     val muteAll = MuteAllCommand(all)
-    val muteAllButton = Button(muteAll)
+    val muteAllButton = Button2(muteAll)
     muteAllButton.click()
 }
