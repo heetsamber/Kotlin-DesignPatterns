@@ -1,3 +1,5 @@
+import kotlin.collections.ArrayList
+
 interface Command {
     fun execute()
 }
@@ -56,9 +58,11 @@ class UniversalRemote {
 
     // here we will have a complex electronic circuit :-)
     // that will maintain current device
-    fun getActiveDevice() : ConsumerElectronics{
-        val tv = Television()
-        return tv
+    companion object{
+        fun getActiveDevice() : ConsumerElectronics{
+            val tv = Television()
+            return tv
+        }
     }
 }
 
