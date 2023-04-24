@@ -9,7 +9,7 @@ class NormalFile : File {
 //Proxy:
 class SecuredFile : File {
     val normalFile = NormalFile()
-    var password: String = ""
+    var password: String = ""           // public 으로 접근가능.
 
     override fun read(name: String) {
         if (password == "secret") {
@@ -23,8 +23,8 @@ class SecuredFile : File {
 
 fun main(args: Array<String>) {
     val securedFile = SecuredFile()
-    securedFile.read("readme.md")
+    securedFile.read("readme.md")           // "Incorrect password. Access denied!"
 
-    securedFile.password = "secret"
-    securedFile.read("readme.md")
+    securedFile.password = "secret"         // 비밀번호 입력
+    securedFile.read("readme.md")           // "Password is correct: $password"
 }
